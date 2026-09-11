@@ -13,3 +13,7 @@ dist/
 *.ckpt
 *.lmdb/
 configs/local/
+
+# Keep only the stable README gallery in Git
+/assets/paper-strict-structures*.gif
+!/assets/paper-strict-structures-4x5.gif
