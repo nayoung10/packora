@@ -1,0 +1,80 @@
+# @package _global_
+
+defaults:
+  - _self_
+  - override hydra/job_logging: disabled
+
+output_dir: ${oc.env:PACKORA_DATA_ROOT,data}/csd
+split: all
+max_entries: null
+n_jobs: 64
+overwrite_lmdb: true
+
+benchmark_carving:
+  enabled: true
+  csvs:
+    - name: rigid
+      path: ${oc.env:PACKORA_DATA_ROOT,data}/csv_manifests/rigid.csv
+      refcode_column: truth_refcodes
+    - name: flexible
+      path: ${oc.env:PACKORA_DATA_ROOT,data}/csv_manifests/flexible.csv
+      refcode_column: truth_refcodes
+    - name: csp_blind5
+      path: ${oc.env:PACKORA_DATA_ROOT,data}/csv_manifests/csp_blind5.csv
+      refcode_column: truth_refcodes
+    - name: csp_blind6
+      path: ${oc.env:PACKORA_DATA_ROOT,data}/csv_manifests/csp_blind6.csv
+      refcode_column: truth_refcodes
+    - name: csp_blind7
+      path: ${oc.env:PACKORA_DATA_ROOT,data}/csv_manifests/csp_blind7.csv
+      refcode_column: truth_refcodes
+    - name: ccdc_teaching
+      path: ${oc.env:PACKORA_DATA_ROOT,data}/csv_manifests/ccdc_teaching.csv
+      refcode_column: truth_refcodes
+  component_overlap:
+    enabled: true
+    min_component_heavy_atoms: 8
+    ignore_solvents: true
+
+hydra:
+  run:
+    dir: .
+  output_subdir: null
+
+preprocessor:
+  _target_: src.data.preprocess.CSDPreprocessor
+  niggli: true
+  filters:
+    _target_: src.data.preprocess.CSDFilterConfig
+    date_cutoff: "2025-05-01"
+    max_atoms: 512
+    max_r_factor: 9.0
+    allow_powder: false
+    allow_polymeric: false
+    require_3d_coordinates: true
+    require_ambient_pressure: true
+    require_known_spacegroup: true
+    require_organic_or_organometallic: true
+  max_entries: ${max_entries}
+  rdkit_template:
+    _target_: src.data.preprocess.RDKitTemplateConfig
+    random_seed: 123
+    relax_with_uff: false
+    uff_max_iters: 1000
+  deduplicate:
+    _target_: src.data.preprocess.utils.config.DeduplicateConfig
+    enabled: true
+    n_jobs: ${n_jobs}
+    structure_matcher:
+      _target_: src.data.preprocess.utils.config.StructureMatcherConfig
+      ltol: 0.2
+      stol: 0.3
+      angle_tol: 5.0
+  cache:
+    _target_: src.data.preprocess.utils.config.PreprocessCacheConfig
+    enabled: true
+    cache_dir_name: _preprocess_cache
+    commit_interval: 10000
+    retry_failed: false
+    entry_timeout_seconds: 180
+  n_jobs: ${n_jobs}

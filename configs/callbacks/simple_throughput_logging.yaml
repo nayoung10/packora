@@ -1,0 +1,4 @@
+simple_throughput_logging:
+  _target_: src.models.callbacks.simple_throughput_logging.SimpleThroughputLoggingCallback
+  every_n_steps: 100
+  warmup_steps: 50

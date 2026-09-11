@@ -1,0 +1,24 @@
+defaults:
+  - _base_
+  - sampler: fixed_shape
+  - _self_
+
+dataset_name: csd
+effective_batch_size: 128
+batch_size: ${eval:'${data.effective_batch_size} // (${trainer.devices} * ${trainer.num_nodes} * ${trainer.accumulate_grad_batches})'}
+pin_memory: false
+length_bucketed_batches: true
+length_bucket_balance_across_ranks: true
+train_drop_fields:
+  - frac_coords
+  - lattice
+  - dataset_index
+  - conditioning.bond_adj
+crystal_rotate: False
+crystal_translate: True
+template_rotate: True
+template_translate: True
+template_torsion_perturb: False
+template_jitter: False
+template_jitter_sigma: 0.05
+predict_split: test

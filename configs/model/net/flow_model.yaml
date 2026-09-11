@@ -1,0 +1,30 @@
+# @package _global_.model.net
+_target_: src.models.flow_model.MaterialFlowModel
+input_embedder:
+  _target_: src.models.components.embedders.InputEmbedder
+  single_embedder:
+    _target_: src.models.components.embedders.SingleEmbedder
+    single_condition_embedder: null
+    coord_embedder: null
+    lattice_embedder: null
+    positional_embedder: null
+  pairwise_embedder:
+    _target_: src.models.components.embedders.PairwiseEmbedder
+    pairwise_condition_embedder: null
+    geometry_pair_embedder: null
+timestep_embedder:
+  _target_: src.models.components.embedders.time.TimestepEmbedder
+  hidden_dim: ${arch.dim_single}
+  edm_preconditioning_enabled: ${model.net.edm_preconditioning.enabled}
+  raw_time_factor: 1000.0
+  edm_time_factor: 1.0
+  activation: ${model.activation}
+pairmixer: null
+heads:
+  _target_: src.models.components.heads.crystal.CrystalHeads
+use_cuequivariance: false
+noisy_input_entry: after_pairmixer     # "before_pairmixer", "after_pairmixer"
+edm_preconditioning:
+  enabled: false
+  loss_weight_enabled: false
+  eps: 1e-5

@@ -1,0 +1,6 @@
+# @package _global_.data.sampler
+_target_: src.data.components.samplers.DistributedLengthBucketBatchSampler
+bucket_size_multiplier: ${data.length_bucket_size_multiplier}
+drop_last: ${data.length_bucket_drop_last}
+seed: ${seed}
+balance_across_ranks: ${data.length_bucket_balance_across_ranks}

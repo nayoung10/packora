@@ -1,0 +1,21 @@
+# @package _global_.model.net.pairmixer
+_target_: src.models.components.pairmixer.Pairmixer
+dim_single: ${arch.dim_single}
+dim_pair: ${arch.dim_pair}
+num_heads: ${arch.heads}
+num_blocks: 4
+update_single: false
+dropout: 0.0
+norm_type: layernorm
+norm_eps: 1e-5
+activation: silu
+attention_impl: ${model.net.transformer.attention_impl}
+force_fp32_attention: ${model.net.transformer.force_fp32_attention}
+use_cuequivariance: ${model.net.use_cuequivariance}
+use_cuequivariance_triangle: ${model.net.use_cuequivariance}
+use_cuequivariance_attention: ${model.net.use_cuequivariance}
+use_triangle_attention: false
+triangle_attention_backend: deepspeed
+triangle_attention_num_heads: 4
+triangle_attention_head_dim: 32
+triangle_attention_chunk_size: null

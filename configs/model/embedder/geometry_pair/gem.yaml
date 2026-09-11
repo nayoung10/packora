@@ -1,0 +1,10 @@
+# @package _global_.model.net.input_embedder.pairwise_embedder.geometry_pair_embedder
+_target_: src.models.components.embedders.geometry.GeometryPairEmbedder
+dim_pair: ${arch.dim_pair}
+n_fourier_freqs: 8
+n_rbf: 16
+rbf_max: 2.0
+hidden_dim: 128
+pbc_radius: 1
+activation: ${model.activation}
+use_time_gate: true

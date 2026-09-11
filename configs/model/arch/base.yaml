@@ -1,0 +1,5 @@
+# @package _global_
+arch:
+  dim_single: 768
+  dim_pair: 192
+  heads: 12

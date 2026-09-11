@@ -1,0 +1,3 @@
+# @package _global_.data.indexing
+index_type: atomic_number_xyz
+descending: false

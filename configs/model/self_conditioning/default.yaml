@@ -1,0 +1,5 @@
+# @package _global_.model.net
+self_conditioning_embedder:
+  _target_: src.models.components.embedders.self_conditioning.SelfConditioningEmbedder
+  coord_embedder: ${model.net.input_embedder.single_embedder.coord_embedder}
+  lattice_embedder: ${model.net.input_embedder.single_embedder.lattice_embedder}

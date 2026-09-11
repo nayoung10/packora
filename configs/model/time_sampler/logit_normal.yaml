@@ -1,0 +1,5 @@
+# @package _global_.model
+time_sampler:
+  _target_: src.models.components.time_samplers.logit_normal.LogitNormalTimeSampler
+  mu: 0.0
+  sigma: 1.0

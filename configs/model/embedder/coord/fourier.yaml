@@ -1,0 +1,8 @@
+# @package _global_.model.net.input_embedder.single_embedder.coord_embedder
+_target_: src.models.components.embedders.coord.fourier.FourierCartCoordEmbedder
+dim: ${arch.dim_single}
+num_channels: 256
+bandwidth: 1.0
+learnable: false
+include_linear: false
+activation: ${model.activation}

@@ -1,0 +1,3 @@
+# @package _global_.model.net.input_embedder.single_embedder.single_condition_embedder
+_target_: src.models.components.embedders.condition.single.SingleConditionEmbedder
+dim: ${arch.dim_single}

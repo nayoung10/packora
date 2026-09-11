@@ -1,0 +1,6 @@
+# @package _global_.model.net.heads.coord_head
+_target_: src.models.components.heads.coord.linear.LinearCoordsHead
+dim: ${arch.dim_single}
+center: ${model.center_cart_coords}
+zero_init: true
+norm_type: ${model.norm_type}

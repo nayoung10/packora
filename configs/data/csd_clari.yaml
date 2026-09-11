@@ -1,0 +1,7 @@
+defaults:
+  - csd
+  - override sampler: family_fixed_shape
+  - _self_
+
+dataset_name: csd_clari
+max_num_atoms: 300

@@ -1,0 +1,85 @@
+# @package _global_
+
+defaults:
+  - _self_
+  - trainer: ddp
+  - paths: default
+  - extras: default
+  - hydra: default
+
+task_name: "predict"
+tags: ["predict"]
+
+# Required: path to model checkpoint
+ckpt_path: ???
+
+seed: 42
+
+eval_with_ema: true
+
+# Prediction-time optional conditioning modes: "on" or "off".
+conditioning_policy:
+  template: "on"
+  stereochemistry: "on"
+  spacegroup: "off"
+
+# Prediction-time model toggles applied before checkpoint model instantiation.
+model_overrides:
+  compile: false
+
+# Source dataset for CSP prediction and aligned references
+source:
+  benchmark: null         # rigid | flexible | csp_blind5 | csp_blind6 | csp_blind7 | ccdc_teaching | oxtal (legacy)
+  data_dir: null          # fallback: training run config data.data_dir
+  dataset_name: null      # fallback: training run config data.dataset_name
+  split: "test"           # train | val | test
+
+# Optional sample limit within source split
+data:
+  # Fallback: training run config data.max_num_atoms, except source.benchmark keeps all rows.
+  max_num_atoms: null
+  template_rotate: true
+  template_translate: true
+  subset:
+    sample_limit: null
+    indices_path: null
+
+# Sampling parameters
+sampling:
+  method: "heun"          # "ode", "sde", or "heun"
+  sde_noise_scale: 1.0
+  sampler_args: {}
+  conditioning_context: predict
+  num_steps: 200
+  batch_size: 16
+  samples_per_datapoint: 1
+  sample_chunk_size: null  # fallback: samples_per_datapoint
+  time_epsilon: 1e-3
+  use_inference_cache: true
+  spacegroup_cfg:
+    weight: 1.0             # ordinary conditional inference; non-unit CFG is not yet supported
+  autoguidance:
+    enabled: false
+    bad_ckpt_path: null
+    weight: 1.0            # 1.0 is no-op; >1.0 extrapolates away from the bad model
+  batch_sampler: null      # "null", "fixed_shape", "length_bucket"
+  num_workers: 8
+  pin_memory: false
+  persistent_workers: false
+  steering_args:
+    fk_steering: false
+    fk_lambda: 2.0
+    fk_resampling_interval: 5
+    fk_start_time: 0.80
+    energy_fn: "mlip"
+    mlip_model: "uma-s-1p2"
+    mlip_task_name: "omc"
+    potential_mode: "immediate"
+    num_particles: 16
+
+# Output settings
+output:
+  save_pt: true
+  save_cif: false
+  save_manifest: true
+  keep_raw: false

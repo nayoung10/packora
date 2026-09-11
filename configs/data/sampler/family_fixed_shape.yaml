@@ -1,0 +1,16 @@
+# @package _global_.data.sampler
+_target_: src.data.components.samplers.DistributedFamilyFixedShapeBucketBatchSampler
+atom_buckets:
+  - 32
+  - 64
+  - 96
+  - 128
+  - 160
+  - 192
+  - 224
+  - 256
+  - 288
+  - 300
+drop_last: true
+seed: ${seed}
+balance_across_ranks: true

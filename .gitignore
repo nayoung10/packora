@@ -1,0 +1,15 @@
+__pycache__/
+*.py[cod]
+.venv*/
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+build/
+dist/
+.env
+/data/
+/logs/
+/predictions/
+*.ckpt
+*.lmdb/
+configs/local/

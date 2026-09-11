@@ -1,0 +1,5 @@
+_target_: src.models.optim.scheduler.LinearWarmupLRScheduler
+_partial_: true
+start_lr: 0.0
+target_lr: ${..optimizer.lr}
+warmup_no_steps: 10000

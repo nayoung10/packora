@@ -1,0 +1,5 @@
+defaults:
+  - csd
+  - _self_
+
+dataset_name: csd_smiles_aligned

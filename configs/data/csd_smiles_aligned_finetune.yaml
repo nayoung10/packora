@@ -1,0 +1,11 @@
+defaults:
+  - csd_smiles_aligned
+  - override sampler: fixed_shape_finetune
+  - _self_
+
+effective_batch_size: null
+batch_size: 16
+val_batch_size: 5
+val_pad_to_atom_buckets: ${data.sampler.atom_buckets}
+max_num_atoms: null
+length_bucketed_batches: false

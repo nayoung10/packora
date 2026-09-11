@@ -1,0 +1,4 @@
+# @package _global_.model.prior
+coord_sampler: centered_gaussian
+lattice_sampler: standard_gaussian
+lattice_dim: ${model.lattice_dim}

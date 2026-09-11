@@ -1,0 +1,18 @@
+validation_generation:
+  _target_: src.models.callbacks.validation_generation.ValidationGenerationCallback
+  output_dir: null
+  manifest_path: null
+  every_n_epochs: 100
+  min_epoch: 0
+  targets_per_class: 1000
+  auto_create_manifest: false
+  allow_insufficient_targets: false
+  batch_size: null
+  num_workers: 0
+  num_samples: 20
+  max_samples_per_call: 1
+  num_steps: 150
+  method: "sde"
+  sde_noise_scale: 1.0
+  sampler_args: {}
+  conditioning_context: ${conditioning.context_by_role.validation_generation}

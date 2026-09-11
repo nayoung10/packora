@@ -1,0 +1,6 @@
+# @package _global_.model.net.input_embedder.pairwise_embedder.pairwise_condition_embedder
+_target_: src.models.components.embedders.condition.pairwise.PairwiseConditionEmbedder
+dim_single: ${arch.dim_single}
+dim_pair: ${arch.dim_pair}
+norm_type: ${model.norm_type}
+activation: ${model.activation}

@@ -1,0 +1,3 @@
+# @package _global_.model
+lattice_repr: cell
+lattice_dim: 9

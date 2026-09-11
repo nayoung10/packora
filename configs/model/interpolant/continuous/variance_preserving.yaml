@@ -1,0 +1,6 @@
+# @package _global_.model
+interpolant:
+  _target_: src.models.components.interpolants.variance_preserving.VariancePreservingInterpolant
+  tau_schedule:
+    _target_: src.models.components.interpolants.variance_preserving.TauCosineSchedule
+    offset: 0.008   # Nichol & Dhariwal (2021), prevents boundary singularities

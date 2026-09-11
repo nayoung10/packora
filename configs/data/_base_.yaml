@@ -1,0 +1,35 @@
+defaults:
+  - indexing: atomic_number_xyz
+  - _self_
+
+_target_: src.data.datamodule.MaterialDataModule
+_recursive_: false
+data_dir: ${paths.data_dir}
+batch_size: 256
+num_workers: 8
+pin_memory: True
+persistent_workers: True
+subset:
+  sample_limit: null
+crystal_rotate: False
+crystal_translate: False
+center_cart_coords: ${model.center_cart_coords}
+template_rotate: False
+template_translate: False
+template_torsion_perturb: False
+template_jitter: False
+template_jitter_sigma: 0.05
+predict_split: test
+train_num_samples: null
+sampler: null
+length_bucketed_batches: false
+length_bucket_size_multiplier: 100
+length_bucket_drop_last: false
+length_bucket_balance_across_ranks: false
+train_drop_fields: null
+train_pad_to_atom_buckets: null
+val_batch_size: null
+val_pad_to_atom_buckets: null
+max_num_atoms: 300
+conditioning_policy: ${conditioning.policy}
+conditioning_contexts: ${conditioning.context_by_role}

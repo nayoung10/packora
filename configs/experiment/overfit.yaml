@@ -1,0 +1,32 @@
+# @package _global_
+
+# Overfit experiment with optional sample limiting:
+#   python src/train.py experiment=overfit data=omc25 data.subset.sample_limit=5
+
+defaults:
+  - override /callbacks: overfit
+  - override /logger: wandb
+
+task_name: "overfit"
+tags: ["overfit"]
+seed: 42
+
+data:
+  subset:
+    sample_limit: null
+  train_num_samples: 1024
+  batch_size: 64
+
+trainer:
+  max_epochs: 2000
+  check_val_every_n_epoch: 50
+  use_distributed_sampler: false
+
+logger:
+  wandb:
+    project: "MatterFlow-Overfit"
+    tags: ${tags}
+    group: "overfit"
+    name: "limit=${data.subset.sample_limit}"
+
+test: false

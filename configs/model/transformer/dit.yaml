@@ -1,0 +1,21 @@
+# @package _global_.model.net.transformer
+_target_: src.models.components.transformers.DiT
+depth: 16
+heads: ${arch.heads}
+dim: ${arch.dim_single}
+dim_pair: ${oc.select:model.net.input_embedder.pairwise_embedder.pairwise_condition_embedder.dim_pair,null}
+mlp_ratio: 4.0
+dropout: 0.0
+attention_impl: pytorch
+force_fp32_attention: false
+qk_norm: true
+share_pair_bias_norm: true
+activation_checkpointing: false
+norm_type: ${model.norm_type}
+block_norm_eps: ${model.norm_eps}
+attention_norm_eps: ${model.norm_eps}
+use_xsa: false
+use_cuequivariance: ${model.net.use_cuequivariance}
+activation: ${model.activation}
+mlp_type: swiglu
+swiglu_multiple_of: 256

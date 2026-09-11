@@ -1,0 +1,10 @@
+throughput_step_logging:
+  _target_: src.models.callbacks.throughput_step_logging.ThroughputStepLoggingCallback
+  output_path: ${paths.output_dir}/throughput.metrics.json
+  step_output_path: ${paths.output_dir}/throughput.steps.jsonl
+  warmup_steps: 50
+  measured_steps: 200
+  measure_epoch: null
+  trial_id: null
+  summary: ""
+  write_step_rows: true

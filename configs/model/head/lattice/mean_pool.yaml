@@ -1,0 +1,7 @@
+# @package _global_.model.net.heads.lattice_head
+_target_: src.models.components.heads.lattice.mean_pool.MeanPoolLatticeHead
+output_dim: ${model.lattice_dim}
+dim: ${arch.dim_single}
+zero_init: true
+norm_type: ${model.norm_type}
+activation: ${model.activation}

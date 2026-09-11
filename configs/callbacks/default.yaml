@@ -1,0 +1,15 @@
+defaults:
+  - model_checkpoint
+  - model_summary
+  - rich_progress_bar
+  - _self_
+
+model_checkpoint:
+  dirpath: ${paths.output_dir}/checkpoints
+  filename: "epoch_{epoch:05d}"
+  save_last: True
+  every_n_epochs: 50
+  save_on_train_epoch_end: True
+
+model_summary:
+  max_depth: -1

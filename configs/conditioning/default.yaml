@@ -1,0 +1,37 @@
+# @package _global_
+
+conditioning:
+  policy:
+    dropout_probs:
+      template: 0.50
+      stereochemistry: 0.50
+      spacegroup: 0.90
+    contexts:
+      train_loss:
+        template: "stochastic"
+        stereochemistry: "stochastic"
+        spacegroup: "stochastic"
+      val_loss:
+        template: "on"
+        stereochemistry: "off"
+        spacegroup: "off"
+      train_generation:
+        template: "on"
+        stereochemistry: "off"
+        spacegroup: "off"
+      validation_generation:
+        template: "on"
+        stereochemistry: "off"
+        spacegroup: "off"
+      predict:
+        template: "on"
+        stereochemistry: "off"
+        spacegroup: "off"
+
+  context_by_role:
+    train_loss: train_loss
+    val_loss: val_loss
+    test: predict
+    predict: predict
+    train_generation: train_generation
+    validation_generation: validation_generation

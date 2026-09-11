@@ -1,0 +1,45 @@
+# @package _global_
+
+defaults:
+  - conditioning: default
+  - data: csd_smiles_aligned_finetune
+  - callbacks: default
+  - logger: null
+  - trainer: ddp
+  - paths: default
+  - extras: default
+  - hydra: default
+  - optional local: default
+  - debug: null
+  - _self_
+
+task_name: "finetune"
+tags: ["finetune"]
+seed: 123
+
+# New-stage initialization checkpoint; weight sources are selected below.
+init_ckpt_path: null
+
+# Optional Hydra config for a checkpoint copied outside its original run directory.
+run_config_path: null
+resolved_run_config_path: null
+
+# Full-state recovery of an interrupted stage-2 run.
+ckpt_path: null
+
+finetune:
+  learning_rate: 1.0e-4
+  warmup_steps: 10000
+  # Previous behavior: raw/raw initialization with EMA warm-start enabled.
+  init_weight_source:
+    raw: raw
+    ema: ema
+  ema_warm_start: false
+
+# Stage 2 only tracks loss validation; generation remains an offline workflow.
+callbacks:
+  model_checkpoint:
+    every_n_epochs: 20
+
+trainer:
+  num_sanity_val_steps: 0

@@ -1,0 +1,6 @@
+# @package _global_.model
+time_sampler:
+  _target_: src.models.components.time_samplers.uniform_beta.UniformBetaTimeSampler
+  alpha: 1.9
+  beta: 1.0
+  uniform_probability: 0.02

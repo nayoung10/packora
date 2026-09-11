@@ -1,0 +1,2 @@
+# @package _global_.model.net
+self_conditioning_embedder: null

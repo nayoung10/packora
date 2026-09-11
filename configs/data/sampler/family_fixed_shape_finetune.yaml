@@ -1,0 +1,42 @@
+# @package _global_.data.sampler
+# Stage-2 family-aware fixed-shape buckets with per-bucket batch sizes.
+_target_: src.data.components.samplers.DistributedFamilyFixedShapeBucketBatchSampler
+atom_buckets:
+  - 32
+  - 64
+  - 96
+  - 128
+  - 160
+  - 192
+  - 224
+  - 256
+  - 288
+  - 300
+  - 320
+  - 352
+  - 384
+  - 416
+  - 448
+  - 480
+  - 512
+batch_sizes:
+  32: 16
+  64: 16
+  96: 16
+  128: 16
+  160: 16
+  192: 16
+  224: 16
+  256: 16
+  288: 16
+  300: 16
+  320: 14
+  352: 11
+  384: 9
+  416: 8
+  448: 7
+  480: 6
+  512: 5
+drop_last: true
+seed: ${seed}
+balance_across_ranks: true

@@ -1,0 +1,6 @@
+defaults:
+  - default
+  - _self_
+
+_target_: torch.optim.AdamW
+_partial_: true

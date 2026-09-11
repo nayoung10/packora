@@ -1,0 +1,5 @@
+# @package _global_.model
+time_sampler:
+  _target_: src.models.components.time_samplers.beta.BetaTimeSampler
+  alpha: 1.9
+  beta: 1.0

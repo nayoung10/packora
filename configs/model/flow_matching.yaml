@@ -1,0 +1,56 @@
+_target_: src.models.flow_module.MaterialFlowModule
+
+defaults:
+  # Core representation
+  - arch: small
+  - lattice_repr: ltri
+  - scaler: standardizing
+  # Flow-matching objective
+  - prior: default
+  - time_sampler: uniform_beta
+  - interpolant/continuous: linear
+  # Model architecture
+  - net: flow_model
+  - self_conditioning: none
+  - embedder/single: default
+  - embedder/coord: fourier
+  - embedder/lattice: mlp
+  - embedder/pairwise: default
+  - embedder/geometry_pair: null
+  - pairmixer: default
+  - transformer: dit
+  - head/coord: linear
+  - head/lattice: mean_pool
+  # Optimization
+  - optimizer: muon
+  - scheduler: linear_warmup
+  # Local model defaults
+  - _self_
+  # Auxiliary losses
+  - loss/periodic_pair_distance: none
+
+self_conditioning_probability: 0.5
+loss_type: l1
+center_cart_coords: true
+activation: gelu
+norm_type: rmsnorm
+norm_eps: 1e-6
+conditioning_contexts: ${conditioning.context_by_role}
+loss_weights:
+  coords: 10.0
+  lattice_lengths: 1.0
+  lattice_angles: 1.0
+  lattice_cell: 1.0
+  lattice_ltri: 1.0
+  periodic_pair_distance: 1.0
+periodic_pair_distance: null
+num_time_bins: 4
+ema_decay: 0.9999
+ema_warm_start: true
+eval_with_ema: false
+compile_target: net
+compile_backend: inductor
+compile_dynamic: false
+compile_mode: null
+compile_fullgraph: false
+compile_cache_size_limit: 64

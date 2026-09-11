@@ -1,0 +1,13 @@
+validation_metrics:
+  _target_: src.models.callbacks.validation_metrics.ValidationMetricsCallback
+  every_n_epochs: 1
+  min_epoch: 0
+  num_samples: 10
+  max_samples_per_call: 1
+  num_steps: 10
+  method: "ode"
+  sde_noise_scale: 1.0
+  ltol: 0.3
+  stol: 0.5
+  angle_tol: 10.0
+  surrogate_alpha: 0.75

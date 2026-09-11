@@ -1,0 +1,6 @@
+# @package _global_.model.periodic_pair_distance
+_target_: src.models.loss.PeriodicPairDistanceLoss
+variant: smooth_lddt
+cutoff: 15.0
+thresholds: [0.5, 1.0, 2.0, 4.0]
+disable_autocast: false

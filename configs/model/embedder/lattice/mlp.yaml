@@ -1,0 +1,5 @@
+# @package _global_.model.net.input_embedder.single_embedder.lattice_embedder
+_target_: src.models.components.embedders.lattice.mlp.MLPLatticeEmbedder
+input_dim: ${model.lattice_dim}
+dim: ${arch.dim_single}
+activation: ${model.activation}
