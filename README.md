@@ -6,7 +6,7 @@
 [![Try Packora](https://img.shields.io/badge/Try_Packora-live_demo-287887.svg)](https://posing-knives-desired-cadillac.trycloudflare.com)
 
 <p align="center">
-  <img src="assets/paper-strict-structures.png" width="900" alt="Strictly recovered molecular crystal structures predicted by Packora-L">
+  <img src="assets/paper-strict-structures-4x5.gif" width="900" alt="Twenty strictly recovered molecular crystal structures predicted by Packora-L, rotating through a seamless full turn">
 </p>
 
 Packora is a family of generative models for molecular crystal structure prediction. This repository provides a simple API for generating crystal structures with pretrained models. It also includes the data preparation, training, benchmark prediction, and evaluation code needed to reproduce our work, which requires a licensed CCDC CSD installation.
