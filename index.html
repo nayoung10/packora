@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Packora is a flow-based generative model that jointly predicts atomic coordinates and the lattice for molecular crystal structure prediction.">
+    <meta name="citation_title" content="Packora: Systematic Design for Generative Molecular Crystal Structure Prediction">
+    <meta name="citation_author" content="Nayoung Kim">
+    <meta name="citation_author" content="Kiyoung Seong">
+    <meta name="citation_author" content="Sungsoo Ahn">
+    <meta name="citation_date" content="2026/08/27">
+    <meta name="citation_arxiv_id" content="2608.26962">
+    <meta name="citation_pdf_url" content="https://arxiv.org/pdf/2608.26962">
+    <title>Packora: Systematic Design for Generative Molecular Crystal Structure Prediction</title>
+    <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&amp;family=Manrope:wght@400;500;600;700&amp;family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./shared.css">
+    <link rel="stylesheet" href="./project.css">
+    <script src="./config.js"></script>
+    <script src="./project.js" defer></script>
+  </head>
+  <body class="project-page">
+    <header class="project-nav">
+      <div class="nav-inner">
+        <a class="brand" href="./" aria-label="Packora project home">
+          <span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></span>
+          <span class="brand-name">Packora</span>
+        </a>
+        <nav class="nav-links" aria-label="Article navigation">
+          <a href="#abstract">Abstract</a>
+          <a href="#method">Method</a>
+          <a href="#results">Results</a>
+          <a href="#study">Study</a>
+          <a href="#citation">Citation</a>
+        </nav>
+        <a class="nav-demo is-unavailable" data-packora-app-link data-testid="nav-generator" aria-disabled="true">
+          <span>Try Packora</span>
+          <small class="app-availability-label">Coming soon</small>
+          <span class="app-action-arrow" aria-hidden="true">→</span>
+        </a>
+      </div>
+    </header>
+
+    <main>
+      <article class="paper-article">
+        <header class="paper-header reading-column">
+          <h1>Packora: Systematic Design for Generative Molecular Crystal Structure Prediction</h1>
+          <p class="author-line">Nayoung Kim, Kiyoung Seong, and Sungsoo Ahn</p>
+          <p class="affiliation-line">KAIST</p>
+
+          <div class="resource-row" aria-label="Project resources">
+            <a class="resource-link" href="https://arxiv.org/abs/2608.26962" aria-label="Read Packora on arXiv">
+              <img class="arxiv-logo" src="./assets/arxiv-logo-primary-light.svg" alt="" aria-hidden="true">
+            </a>
+            <a class="resource-link" href="https://github.com/nayoung10/packora" aria-label="View Packora code on GitHub">
+              <svg class="resource-icon" viewBox="0 0 24 24" aria-hidden="true">
+                <path fill="currentColor" d="M12 .7a11.5 11.5 0 0 0-3.64 22.4c.58.1.79-.25.79-.56v-2.23c-3.22.7-3.9-1.37-3.9-1.37-.52-1.34-1.28-1.7-1.28-1.7-1.05-.72.08-.71.08-.71 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.57-.29-5.27-1.28-5.27-5.69 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.16 1.18a10.9 10.9 0 0 1 5.76 0c2.2-1.49 3.16-1.18 3.16-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.42-2.71 5.39-5.29 5.68.42.36.79 1.06.79 2.14v3.28c0 .31.21.67.8.55A11.5 11.5 0 0 0 12 .7Z"/>
+              </svg>
+              <span>Code</span>
+            </a>
+            <a class="resource-link" href="https://huggingface.co/nayoung10/Packora-ckpt" aria-label="View Packora models on Hugging Face">
+              <span class="resource-icon huggingface-icon" aria-hidden="true">🤗</span>
+              <span>Hugging Face</span>
+            </a>
+            <a class="resource-link resource-primary is-unavailable" data-packora-app-link data-testid="launch-generator" aria-disabled="true">
+              <span class="brand-mark action-brand-mark" aria-hidden="true"><span></span><span></span><span></span></span>
+              <span>Try Packora</span>
+              <small class="app-availability-label">Coming soon</small>
+              <span class="app-action-arrow" aria-hidden="true">→</span>
+            </a>
+          </div>
+        </header>
+
+        <section id="abstract" class="article-section reading-column">
+          <p class="section-label">Abstract</p>
+          <p class="abstract-copy">Molecular crystal structure prediction (CSP) is important in pharmaceuticals, agrochemicals, and organic electronics, where subtle differences in molecular conformation and packing can strongly affect material properties. We present Packora, a flow-based generative model for molecular CSP that jointly predicts atomic coordinates and the lattice from molecular graphs.</p>
+          <p>Packora supports multi-component and organometallic crystals and can condition on any subset of molecular conformers, stereochemical labels, and space-group information within a single model. Inspired by the CCDC CSP blind test, we evaluate generation and ranking separately, using generation to isolate generator quality and ranking to measure end-to-end performance under a common relaxation and ranking pipeline. We also systematically study architecture, training, conditioning, inference, and scaling, identifying an effective design based on cacheable pairwise reasoning, training objective and numerical solver choices, conditioning dropout, and balanced scaling of pairwise and single representations. Packora outperforms the baselines on both structure generation and ranking benchmarks, achieving the best matched-budget coverage across all six generation benchmarks, as well as higher experimental-form recovery, lower experimental-form ranks, and faster convergence in ranking.</p>
+        </section>
+
+        <figure class="paper-figure reading-column">
+          <img src="./assets/paper-strict-structures.png" alt="Eighteen molecular crystal structures strictly recovered by Packora-L" loading="eager">
+          <figcaption><strong>Strictly recovered structures.</strong> Each Packora-L prediction is collision-free and matches all 15 molecules of its experimental reference with RMSD<sub>15</sub> below 2 Å. The examples span varied compositions, packing motifs, and unit-cell geometries.</figcaption>
+        </figure>
+
+        <section id="overview" class="article-section reading-column">
+          <p class="section-label">Overview</p>
+          <h2>Candidate generation for molecular crystal structure prediction</h2>
+          <p>Molecular crystal structure prediction has two complementary stages. A generator first proposes candidate packings; a downstream workflow then relaxes the structures and ranks them by energy. Generative models address the first stage by learning from experimentally observed crystals and allocating a finite candidate budget to plausible packings.</p>
+          <p>Packora takes molecular or ionic component graphs—atom types, bond types, formal charges, and stoichiometry—and predicts Cartesian coordinates together with a periodic unit cell. Hydrogen atoms are represented explicitly, and the resulting structures can be passed directly to downstream relaxation and ranking methods.</p>
+          <ol class="contribution-list">
+            <li><strong>Flexible conditional generation.</strong> A single model supports molecular graphs alone or any combination of molecular templates, stereochemical labels, and space-group information.</li>
+            <li><strong>A matched two-track evaluation.</strong> Unranked finite-budget coverage is reported separately from performance after a shared relaxation and energy-ranking pipeline.</li>
+            <li><strong>A controlled design study.</strong> Architecture, training, conditioning, inference, and scaling are compared under a fixed protocol to establish an evidence-backed recipe.</li>
+          </ol>
+        </section>
+
+        <section id="method" class="article-section reading-column">
+          <p class="section-label">Method</p>
+          <h2>Joint coordinate–lattice flow matching</h2>
+          <p>Packora learns a conditional flow over Cartesian atomic coordinates and lattice parameters. The model keeps a condition-only pair representation separate from the noisy crystal state, allowing the pair track to be computed once and reused during iterative generation. The resulting pair representation supplies attention biases to a diffusion-transformer trunk, followed by separate coordinate and lattice heads.</p>
+          <p>Condition dropout during training allows the same network to operate when local molecular templates, stereochemistry, or crystallographic information are present, partially specified, or absent.</p>
+        </section>
+
+        <figure class="paper-figure reading-column architecture-figure">
+          <img src="./assets/paper-model-architecture.png" alt="Packora model architecture with condition and time embedders, Pairmixer, transformer trunk, and crystal heads" loading="lazy">
+          <figcaption><strong>Final model architecture.</strong> Condition-only pair features pass through four Pairmixer blocks and enter the 16-block transformer trunk as pairwise attention bias. Noisy coordinates and lattice parameters are embedded after the cacheable pair track; separate heads predict their endpoints.</figcaption>
+        </figure>
+
+        <section id="results" class="article-section reading-column">
+          <p class="section-label">Evaluation and results</p>
+          <h2>Generation and downstream ranking are evaluated separately</h2>
+          <p>In the generation track, an unranked finite candidate set is tested for the experimentally observed packing. No relaxation, energy ranking, replacement generation, or ranker-assisted downselection is used. In the ranking track, independent pools from each generator are processed through the same relaxation, filtering, deduplication, and lattice-energy ranking pipeline.</p>
+          <div class="result-summary" aria-label="Principal reported results">
+            <p><strong>6 / 6 benchmarks</strong><span>Packora-M or Packora-L obtains the best or tied-best matched-budget generation coverage at both 30 and 1,000 candidates.</span></p>
+            <p><strong>73.1% at Top-20</strong><span>Packora-L recovers experimental forms on the FastCSP single-polymorph benchmark, compared with 57.7% for CLARI-H.</span></p>
+            <p><strong>58.6% at Top-20</strong><span>Packora-L recovery on the FastCSP multi-polymorph benchmark, compared with 44.8% for CLARI-H.</span></p>
+          </div>
+        </section>
+
+        <div class="benchmark-figures reading-column" aria-label="Crystal coverage at two candidate budgets">
+          <figure class="paper-figure">
+            <img src="./assets/paper-generation-benchmark-30.png" alt="Bar chart of crystal coverage at an effective generation budget of 30 candidates" loading="lazy">
+            <figcaption><strong>Crystal coverage at a budget of 30 candidates.</strong> Bars show mean coverage; error bars report one resampling standard deviation. Packora-M or Packora-L is best or tied best across the six reported benchmarks.</figcaption>
+          </figure>
+          <figure class="paper-figure">
+            <img src="./assets/paper-generation-benchmark-1000.png" alt="Bar chart of exact crystal coverage at a generation budget of 1,000 candidates" loading="lazy">
+            <figcaption><strong>Crystal coverage at a budget of 1,000 candidates.</strong> Bars report exact coverage over each complete controlled candidate pool; no resampling or error bars are used.</figcaption>
+          </figure>
+        </div>
+
+        <div class="ranking-figures reading-column">
+          <figure class="paper-figure">
+            <img src="./assets/paper-ranking-single.png" alt="Experimental-form ranking and relaxation results on the FastCSP single-polymorph benchmark" loading="lazy">
+            <figcaption><strong>FastCSP single-polymorph benchmark.</strong> Best experimental-form rank, recovery by rank cutoff, and relaxation convergence under a shared downstream workflow.</figcaption>
+          </figure>
+          <figure class="paper-figure">
+            <img src="./assets/paper-ranking-multi.png" alt="Experimental-form ranking and relaxation results on the FastCSP multi-polymorph benchmark" loading="lazy">
+            <figcaption><strong>FastCSP multi-polymorph benchmark.</strong> System-wide experimental-form ranking, recovery by rank cutoff, and relaxation convergence.</figcaption>
+          </figure>
+        </div>
+
+        <section id="study" class="article-section reading-column systematic-section">
+          <p class="section-label">Systematic study</p>
+          <h2>Controlled choices across the generation pipeline</h2>
+          <p>The design study varies one component at a time. It identifies cacheable pairwise reasoning as the principal architectural improvement, and finds that robust endpoint learning benefits from a Beta-plus-uniform time distribution, random fractional crystal translations, and an L1 objective. The study also examines optional conditioning, numerical sampling, and the balance between single- and pair-track capacity.</p>
+        </section>
+
+        <div class="study-figures reading-column">
+          <figure class="paper-figure">
+            <img src="./assets/paper-study-architecture.png" alt="Six plots comparing Packora architectures, extensions, cache runtime, and peak memory" loading="lazy">
+            <figcaption><strong>Architecture selection, extensions, and caching.</strong> Pairmixer provides the dominant architecture gain. Keeping noisy-state features outside the pair track allows its condition-only representation to be cached across generation steps.</figcaption>
+          </figure>
+          <figure class="paper-figure">
+            <img src="./assets/paper-study-training.png" alt="Six plots comparing Packora training recipe choices" loading="lazy">
+            <figcaption><strong>Training recipe selection.</strong> Controlled comparisons cover time sampling, crystal translation and regression objective, coordinate–lattice loss weighting, auxiliary pair supervision, optimizer, and parameter averaging.</figcaption>
+          </figure>
+          <figure class="paper-figure">
+            <img src="./assets/paper-study-scaling.png" alt="Packora model-width scaling trade-off and epoch sweeps" loading="lazy">
+            <figcaption><strong>Balanced model-width scaling.</strong> Jointly scaling the single- and pair-track widths reaches a more favorable sampling-budget trade-off than increasing either width in isolation.</figcaption>
+          </figure>
+        </div>
+
+        <section id="citation" class="article-section reading-column citation-section">
+          <p class="section-label">Citation</p>
+          <h2>Cite Packora</h2>
+          <p>If you use Packora in your research, please cite the <a href="https://arxiv.org/abs/2608.26962">paper</a>.</p>
+          <pre class="citation-block"><code>@misc{kim2026packorasystematicdesigngenerative,
+  title         = {Packora: Systematic Design for Generative Molecular Crystal Structure Prediction},
+  author        = {Nayoung Kim and Kiyoung Seong and Sungsoo Ahn},
+  year          = {2026},
+  eprint        = {2608.26962},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.LG},
+  url           = {https://arxiv.org/abs/2608.26962}
+}</code></pre>
+        </section>
+      </article>
+    </main>
+
+    <footer class="project-footer">
+      <p>Website created with GPT-6 Astra · Published with permission from the CCDC.</p>
+    </footer>
+  </body>
+</html>

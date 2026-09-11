@@ -1,0 +1,35 @@
+:root {
+  --ink: #303640;
+  --muted: #69717b;
+  --line: #d8dcdf;
+  --line-soft: #e9ebe9;
+  --paper: #ffffff;
+  --card: #ffffff;
+  --teal: #3e97a8;
+  --teal-dark: #287887;
+  --teal-pale: #dff1f4;
+  --purple: #846590;
+  --purple-pale: #eadff0;
+  --orange: #e0902e;
+  --green: #4fa06a;
+  --rose: #cc5c5c;
+  --shadow: 0 22px 60px rgba(48, 54, 64, 0.09);
+  --radius: 18px;
+  --font: "Manrope", system-ui, sans-serif;
+  --mono: "DM Mono", ui-monospace, monospace;
+}
+
+* { box-sizing: border-box; }
+
+html { min-height: 100%; scroll-behavior: smooth; }
+body { min-height: 100%; margin: 0; background: var(--paper); color: var(--ink); font-family: var(--font); -webkit-font-smoothing: antialiased; }
+button, input, select { font: inherit; }
+button, a { -webkit-tap-highlight-color: transparent; }
+
+.brand { width: fit-content; display: inline-flex; align-items: center; gap: 11px; color: var(--ink); text-decoration: none; }
+.brand-name { font-size: 21px; font-weight: 700; letter-spacing: -0.04em; }
+.brand-mark { width: 29px; height: 29px; position: relative; display: inline-block; }
+.brand-mark span { position: absolute; width: 14px; height: 14px; border: 2px solid var(--teal-dark); }
+.brand-mark span:nth-child(1) { left: 0; top: 7px; transform: rotate(30deg); }
+.brand-mark span:nth-child(2) { right: 0; top: 0; transform: rotate(30deg); border-color: var(--purple); }
+.brand-mark span:nth-child(3) { right: 0; bottom: 0; transform: rotate(30deg); border-color: var(--orange); }
