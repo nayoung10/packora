@@ -1,7 +1,7 @@
 # Packora
 
 [![arXiv](https://img.shields.io/badge/arXiv-2608.26962-b31b1b.svg)](https://arxiv.org/abs/2608.26962)
-[![Hugging Face](https://img.shields.io/badge/%F0%9F%A4%97_Hugging_Face-Packora-ffd21e.svg)](https://huggingface.co/nayoung10/Packora-ckpt)
+[![Hugging Face](https://img.shields.io/badge/%F0%9F%A4%97_Hugging_Face-Packora-ffd21e.svg)](https://huggingface.co/collections/nayoung10/packora)
 [![Project Page](https://img.shields.io/badge/Project_Page-Packora-287887.svg)](https://nayoung10.github.io/packora/)
 [![Try Packora](https://img.shields.io/badge/Try_Packora-live_demo-287887.svg)](https://posing-knives-desired-cadillac.trycloudflare.com)
 
